@@ -20,6 +20,7 @@ class PicturesController < ApplicationController
     @picture = Picture.new(picture_params)
     @picture.user_id = current_user.id
     if @picture.save
+      ContactMailer.contact_mail(@picture).deliver
       redirect_to picture_url(@picture), notice: "Picture was successfully created." 
     else
       render :new, status: :unprocessable_entity 
