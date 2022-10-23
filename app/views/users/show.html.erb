@@ -2,6 +2,11 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 
-<h1>プロフィール画像<%= image_tag @user.image.url %></h1>
+<p>
+  <% unless @user.image.url == nil %>
+  <strong>プロフィール画像:</strong>
+  <%= image_tag @user.image.url, size: '300x200' %>
+  <% end %>
+</p>
 
 <%= link_to '投稿一覧', pictures_path %>
