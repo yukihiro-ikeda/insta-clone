@@ -15,7 +15,9 @@ gem 'mini_magick'
 gem 'bcrypt'
 gem 'rexml'
 gem 'faker'
-
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
