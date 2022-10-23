@@ -54,19 +54,20 @@ class PicturesController < ApplicationController
   end
 
   private
-    def set_picture
-      @picture = Picture.find(params[:id])
-    end
 
-    def picture_params
-      params.require(:picture).permit(:content, :image, :image_cache, :user_id)
-    end
+  def set_picture
+    @picture = Picture.find(params[:id])
+  end
 
-    def ensure_correct_user
-      @picture = Picture.find_by(id: params[:id])
-      if @current_user.id != @picture.user_id
-        flash[:notice] = "権限がありません"
-        redirect_to("/pictures/index")
-      end
+  def picture_params
+    params.require(:picture).permit(:content, :image, :image_cache, :user_id)
+  end
+
+  def ensure_correct_user
+    @picture = Picture.find_by(id: params[:id])
+    if @current_user.id != @picture.user_id
+      flash[:notice] = "権限がありません"
+      redirect_to("/pictures/index")
     end
+  end
 end
