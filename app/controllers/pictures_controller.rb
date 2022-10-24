@@ -67,7 +67,7 @@ class PicturesController < ApplicationController
     @picture = Picture.find_by(id: params[:id])
     if @current_user.id != @picture.user_id
       flash[:notice] = "権限がありません"
-      redirect_to("/pictures/index")
+      redirect_to pictures_path
     end
   end
 end
